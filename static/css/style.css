@@ -1,0 +1,54 @@
+:root {
+  /* Official project palette. */
+  --green: #01A049;
+  --brown: #432f0f;
+  --gold: #DDA417;
+  --red: #d83232;
+  --bg-overlay: rgba(6, 34, 19, 0.16);
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; margin: 0; }
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 24px;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--gold);
+  background-color: var(--green);
+  /* Zelda background; a light overlay keeps the illustration visible. */
+  background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../images/zelda-background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.timer-panel {
+  width: min(100%, 770px);
+  padding: clamp(26px, 6vw, 66px);
+  text-align: center;
+  background: linear-gradient(155deg, rgba(1, 100, 47, .60), rgba(67, 47, 15, .64));
+  border: 2px solid var(--brown);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(221, 164, 23, .22);
+}
+.eyebrow { letter-spacing: .34em; font-size: .78rem; font-weight: bold; }
+h1 { font-size: clamp(2.3rem, 7vw, 4.7rem); margin: .12em 0; }
+.subheading { margin: 0 0 38px; font-size: 1.05rem; }
+.timer-form { max-width: 380px; margin: 0 auto; }
+.timer-form label { display: block; margin-bottom: 10px; font-size: 1rem; }
+.input-row { display: flex; align-items: center; background: rgba(17, 32, 24, .8); border: 2px solid var(--brown); border-radius: 10px; }
+.input-row:focus-within { outline: 2px solid var(--gold); outline-offset: 3px; }
+input { width: 100%; min-width: 0; padding: 14px 16px; background: transparent; border: 0; outline: 0; color: var(--gold); font: 1.4rem Georgia, serif; }
+.input-unit { padding: 0 16px; font-size: .95rem; }
+.hint { font-size: .8rem; opacity: .85; margin: 9px 0 18px; }
+button { background: var(--brown); color: var(--gold); border: 2px solid var(--gold); border-radius: 10px; padding: 14px 24px; font: bold 1.05rem Georgia, serif; width: 100%; cursor: pointer; transition: background .2s, transform .2s; }
+button:hover:not(:disabled) { background: #624419; transform: translateY(-1px); }
+button:disabled { opacity: .62; cursor: not-allowed; }
+.countdown-wrap { margin-top: 42px; }
+.countdown { font-family: Georgia, 'Times New Roman', serif; font-variant-numeric: tabular-nums; font-size: clamp(2.4rem, 10vw, 6.4rem); font-weight: bold; letter-spacing: .025em; color: var(--gold); white-space: nowrap; }
+.status { min-height: 1.5em; margin: 10px 0 0; font-size: 1rem; }
+.footer-note { margin-top: 36px; letter-spacing: .2em; font-size: .75rem; opacity: .75; }
+.countdown.finished { animation: flash-finished 1s steps(1, end) infinite; }
+@keyframes flash-finished { 0%, 49.99% { color: var(--red); } 50%, 100% { color: var(--gold); } }
+@media (prefers-reduced-motion: reduce) { .countdown.finished { animation-duration: 2s; } }
+@media (max-width: 430px) { .timer-panel { padding-inline: 15px; } .countdown { font-size: clamp(2rem, 9vw, 3.5rem); } }

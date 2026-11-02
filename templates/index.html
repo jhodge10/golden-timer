@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Countdown</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/timer.js') }}" defer></script>
+</head>
+<body>
+  <main class="timer-panel" aria-labelledby="page-title">
+    <p class="eyebrow">THE COUNTDOWN</p>
+    <h1 id="page-title">Golden Timer</h1>
+    <p class="subheading">Set your hours and begin.</p>
+
+    <form id="timer-form" class="timer-form">
+      <label for="hours">Duration in hours (up to 300)</label>
+      <div class="input-row">
+        <input id="hours" name="hours" type="number" min="0.0002777778" max="300" step="any" value="1" required aria-describedby="timer-hint">
+        <span class="input-unit">hours</span>
+      </div>
+      <p id="timer-hint" class="hint">Decimals are allowed (for example, 0.5 = 30 minutes).</p>
+      <button id="start-button" type="submit">Start Timer</button>
+    </form>
+
+    <div class="countdown-wrap">
+      <div id="countdown" class="countdown" role="timer" aria-label="Time remaining">001:00:00</div>
+      <p id="status" class="status" role="status" aria-live="polite">Ready to begin</p>
+    </div>
+    <p class="footer-note">Hours : Minutes : Seconds</p>
+  </main>
+</body>
+</html>
